@@ -23,7 +23,7 @@ class DetectFraudJobRunner(
             fileWriter.write(outputTable)
             println(outputTable)
         } catch (e: Exception) {
-            println("Something bad happened: ${e.message}")
+            println("DetectFraudJobRunner Error: ${e.message}")
             throw e
         }
     }

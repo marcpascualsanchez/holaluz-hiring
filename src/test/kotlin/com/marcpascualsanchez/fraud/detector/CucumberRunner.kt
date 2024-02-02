@@ -8,7 +8,7 @@ import org.junit.runner.RunWith
 @CucumberOptions(
     stepNotifications = true,
     features = ["src/test/resources/features"],
-    glue = ["com.marcpascualsanchez.kotlin.spring.boilerplate.steps"],
+    glue = ["com.marcpascualsanchez.fraud.detector.steps"],
     plugin = ["pretty"],
     tags = "not @ignored",
 )

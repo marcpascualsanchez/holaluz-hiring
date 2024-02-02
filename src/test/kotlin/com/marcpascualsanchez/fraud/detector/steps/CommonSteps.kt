@@ -11,7 +11,7 @@ import java.io.File
 class CommonSteps : BaseApplication() {
     @When("the fraud detection job is executed with files {string}")
     fun `the fraud detection job is executed with files`(fileNames: String) {
-        executeCommand(listOf("./gradlew", "bootRun",  "-P", "inputFiles=$fileNames"))
+        executeCommand(listOf("./gradlew", "bootRun", "-P", "inputFiles=$fileNames"))
     }
 
     @Then("the output is the same as in {string}")
@@ -30,9 +30,6 @@ class CommonSteps : BaseApplication() {
             val processBuilder = ProcessBuilder(command)
 
             val process = processBuilder.start()
-            println(command)
-            val output = process.inputStream.bufferedReader().readText()
-            println("Output: $output")
 
             process.waitFor()
         } catch (e: Exception) {

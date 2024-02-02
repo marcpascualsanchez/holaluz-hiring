@@ -32,3 +32,5 @@ If you want to add more files you have to place them inside the `src/main/resour
 - Fix the table formatter so it's properly indented.
 - This app could & should be embedded in a docker. I'd create a dockerfile to generate an image with the dependencies needed for the app to run and use that image in a docker-compose file to run it from CI.
 - Improve e2e testing assertion to not depend on printed lines. Since this is a CI app that only displays a table, I'm taking that as the output. I should only take the data inside that table internally instead.
+- Add more e2e test cases (unsupported file extension, wrong file content format...)
+- Add test coverage

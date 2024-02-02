@@ -14,7 +14,7 @@ class FileWriter(
         val filePath = Paths.get(outputPath)
 
         try {
-            Files.write(filePath, content.toByteArray(), StandardOpenOption.CREATE, StandardOpenOption.WRITE)
+            Files.write(filePath, content.toByteArray(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)
             println("File created at $outputPath")
         } catch (e: Exception) {
             println("An error occurred creating the file at $outputPath: ${e.message}")
