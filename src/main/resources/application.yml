@@ -10,3 +10,5 @@ fraud-detector:
     lines-by-client: 12
     csv:
       separator: ","
+    output-file: "src/main/resources/data/output/fraudEvaluation.txt"
+    input-path: "src/main/resources/data/input"

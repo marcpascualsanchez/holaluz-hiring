@@ -44,7 +44,9 @@ java {
 tasks.named<JavaExec>("bootRun") {
 	if (project.hasProperty("inputFiles")) {
 		args = mutableListOf(project.property("inputFiles") as String)
+		println("I MISS YOU ${project.property("inputFiles") as String}")
 	}
+	println("HELLO THERE")
 }
 
 tasks.withType<KotlinCompile> {

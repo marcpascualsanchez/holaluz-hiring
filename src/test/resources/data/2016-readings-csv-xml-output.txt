@@ -1,30 +1,17 @@
-
-> Task :bootRun
-2024-02-02 15:01:50.190  INFO 74292 --- [           main] inSpringBoilerplateApplication$Companion : Starting KotlinSpringBoilerplateApplication.Companion using Java 1.8.0_202-release on marc-dualboot with PID 74292 (/home/marcpache/projects/marcpascualsanchez-holaluz-hiring/build/classes/kotlin/main started by marcpache in /home/marcpache/projects/marcpascualsanchez-holaluz-hiring)
-2024-02-02 15:01:50.191  INFO 74292 --- [           main] inSpringBoilerplateApplication$Companion : No active profile set, falling back to 1 default profile: "default"
-2024-02-02 15:01:50.580  INFO 74292 --- [           main] inSpringBoilerplateApplication$Companion : Started KotlinSpringBoilerplateApplication.Companion in 0.579 seconds (JVM running for 0.722)
-[Fatal Error] :1:2: The markup in the document preceding the root element must be well-formed.
-Error parsing XML for line: </readings> (will be ignored)
 | Client              | Month              | Suspicious         | Median
- -------------------------------------------------------------------------------
-| 583ef6329d7b9          | 2016-09            | 3564          | 42798.5
- -------------------------------------------------------------------------------
-| 583ef6329d89b          | 2016-09            | 162078          | 59606.5
- -------------------------------------------------------------------------------
-| 583ef6329d89b          | 2016-10            | 7759          | 59606.5
- -------------------------------------------------------------------------------
-| 583ef6329d916          | 2016-09            | 2479          | 40956.0
- -------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 | 583ef6329e237          | 2016-11            | 1379          | 30132.5
- -------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 | 583ef6329e271          | 2016-10            | 121208          | 21661.0
- -------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 | 583ef6329e3ab          | 2016-11            | 6440          | 27867.5
- -------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 | 583ef6329e41b          | 2016-05            | 133369          | 32790.5
-
-Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
-
-You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
-
-For more on this, please refer to https://docs.gradle.org/8.3/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+-------------------------------------------------------------------------------
+| 583ef6329d7b9          | 2016-09            | 3564          | 42798.5
+-------------------------------------------------------------------------------
+| 583ef6329d89b          | 2016-09            | 162078          | 59606.5
+-------------------------------------------------------------------------------
+| 583ef6329d89b          | 2016-10            | 7759          | 59606.5
+-------------------------------------------------------------------------------
+| 583ef6329d916          | 2016-09            | 2479          | 40956.0

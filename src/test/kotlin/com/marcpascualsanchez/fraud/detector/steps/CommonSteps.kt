@@ -4,47 +4,39 @@ import com.marcpascualsanchez.fraud.detector.BaseApplication
 import io.cucumber.java.en.Then
 import io.cucumber.java.en.When
 import io.cucumber.spring.CucumberContextConfiguration
-import java.io.BufferedReader
-import java.io.InputStreamReader
 import org.assertj.core.api.Assertions.assertThat
+import java.io.File
 
 @CucumberContextConfiguration
 class CommonSteps : BaseApplication() {
-    private var output = ""
-
     @When("the fraud detection job is executed with files {string}")
     fun `the fraud detection job is executed with files`(fileNames: String) {
-        output = executeCommand("./gradlew bootRun -P inputFiles=\"$fileNames\"")
-        println("START")
-        println(output)
-        println("END")
+        executeCommand(listOf("./gradlew", "bootRun",  "-P", "inputFiles=$fileNames"))
     }
 
     @Then("the output is the same as in {string}")
     fun `the output is the same as in`(fileName: String) {
-        assertThat(output).isEqualTo(loadFile("/data/$fileName"))
+        assertThat(
+            loadFile("src/main/resources/data/output/fraudEvaluation.txt")
+        ).isEqualTo(
+            loadFile("src/test/resources/data/$fileName")
+        )
     }
 
-    private fun loadFile(file: String) =
-        this::class.java.getResource(file)!!.readText()
+    private fun loadFile(file: String) = File(file).readText()
 
-    private fun executeCommand(command: String): String {
-        val process = ProcessBuilder(command.split("\\s".toRegex()))
-            .start()
+    private fun executeCommand(command: List<String>) {
+        try {
+            val processBuilder = ProcessBuilder(command)
 
-        // Read the output of the process
-        val reader = BufferedReader(InputStreamReader(process.inputStream))
-        var line: String? = reader.readLine()
+            val process = processBuilder.start()
+            println(command)
+            val output = process.inputStream.bufferedReader().readText()
+            println("Output: $output")
 
-        while (line != null) {
-            println(line)
-            line = reader.readLine()
+            process.waitFor()
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
-
-        // Wait for the process to finish
-        process.waitFor()
-
-        // Print the output and exit code
-        return output
     }
 }

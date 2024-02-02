@@ -5,6 +5,7 @@ import com.marcpascualsanchez.fraud.detector.domain.entity.FraudEvaluation
 import com.marcpascualsanchez.fraud.detector.infrastructure.formatter.TableFormatter
 import com.marcpascualsanchez.fraud.detector.infrastructure.file.service.FileReaderService
 import com.marcpascualsanchez.fraud.detector.infrastructure.file.InputFile
+import com.marcpascualsanchez.fraud.detector.infrastructure.file.writer.FileWriter
 import org.springframework.stereotype.Component
 
 @Component
@@ -13,11 +14,14 @@ class DetectFraudJobRunner(
     private val detectFraudQuery: DetectFraudQuery,
     private val fileReaderService: FileReaderService,
     private val tableFormatter: TableFormatter,
+    private val fileWriter: FileWriter,
 ) {
     fun run(fileNamesCI: String) {
         try {
             val files = fileReaderService.parseFileNames(fileNamesCI)
-            tableFormatter.display(files.flatMap { readFile(it) })
+            val outputTable = tableFormatter.format(files.flatMap { readFile(it) })
+            fileWriter.write(outputTable)
+            println(outputTable)
         } catch (e: Exception) {
             println("Something bad happened: ${e.message}")
             throw e

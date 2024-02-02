@@ -5,12 +5,12 @@ import org.springframework.stereotype.Component
 
 @Component
 class TableFormatter {
-    fun display(fraudEvaluations: List<FraudEvaluation>) {
-        println("| Client              | Month              | Suspicious         | Median")
-        fraudEvaluations.forEach {
-            println(" -------------------------------------------------------------------------------")
-            println("| ${it.clientId}          | ${it.period}            | ${it.suspiciousReading}          | ${it.median}")
-        }
+    val header = "| Client              | Month              | Suspicious         | Median"
+    val separator = "\n-------------------------------------------------------------------------------\n"
+    fun format(fraudEvaluations: List<FraudEvaluation>): String {
+        val table =
+            fraudEvaluations.map { "| ${it.clientId}          | ${it.period}            | ${it.suspiciousReading}          | ${it.median}" }
+        return header + separator + table.joinToString(separator)
     }
 
 }
