@@ -19,7 +19,7 @@ class CommonSteps : BaseApplication() {
         assertThat(
             loadFile("src/main/resources/data/output/fraudEvaluation.txt")
         ).isEqualTo(
-            loadFile("src/test/resources/data/$fileName")
+            loadFile("src/e2eTest/resources/data/$fileName")
         )
     }
 

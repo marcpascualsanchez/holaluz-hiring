@@ -22,14 +22,14 @@ class FileReaderService(
             SupportedInputFileExtension.CSV -> {
                 fileReader.read(
                     file.fullName,
-                    FilePagination(STARTING_LINE, linesByClient, CSV_HEADER_LINES)
+                    FilePagination(linesByClient, CSV_HEADER_LINES)
                 ).mapNotNull { csvParser.parse(it) }
             }
 
             SupportedInputFileExtension.XML -> {
                 fileReader.read(
                     file.fullName,
-                    FilePagination(STARTING_LINE, linesByClient, XML_HEADER_LINES)
+                    FilePagination(linesByClient, XML_HEADER_LINES)
                 ).mapNotNull { xmlParser.parse(it) }
             }
         }
@@ -46,7 +46,6 @@ class FileReaderService(
     private fun findExtension(fileName: String) = fileName.substringAfterLast(".")
 
     companion object {
-        const val STARTING_LINE = 0
         const val CSV_HEADER_LINES = 1
         const val XML_HEADER_LINES = 2
     }
