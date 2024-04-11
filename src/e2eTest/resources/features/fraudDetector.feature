@@ -1,6 +1,6 @@
 Feature: job reads input files and detects possible frauds
 
-  Scenario Outline: Scenario: reads with possible frauds are detected
+  Scenario Outline: job reads with possible frauds are detected
     When the fraud detection job is executed with files <inputFiles>
     Then the output is the same as in <outputFile>
 
